@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "PuzzleBrain.h"
 
 @interface ViewController ()
 
@@ -37,11 +38,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    NSLog(@"View did load.");
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)didSwipeTile:(UIButton *)sender{
+    NSLog(@"tile slide");
+}
+- (IBAction)swipeGestureCheck:(UISwipeGestureRecognizer *)sender{
+    NSLog(@"Swipe gesture recognized");
+    
+}
+- (IBAction)didTapShuffle:(UIButton *)sender{
+    NSLog(@"Shuffle pressed");
+}
+
+- (IBAction)didTapReset:(UIButton *)sender{
+    NSLog(@"Reset pressed");
+}
+
+- (IBAction)didMoveSlider:(UISlider *)sender{
+    NSLog(@"Slider moved");
 }
 
 @end

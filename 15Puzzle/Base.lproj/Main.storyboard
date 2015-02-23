@@ -16,6 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhM-VL-Ysn">
+                                <rect key="frame" x="90" y="99" width="49" height="46"/>
+                                <state key="normal" title="1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tbh-xU-jco">
                                 <rect key="frame" x="147" y="99" width="49" height="46"/>
                                 <state key="normal" title="2">
@@ -88,12 +94,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IdK-wA-Moh">
-                                <rect key="frame" x="147" y="261" width="49" height="46"/>
-                                <state key="normal" title="14">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQX-Tc-OH3">
                                 <rect key="frame" x="204" y="261" width="49" height="46"/>
                                 <state key="normal" title="15">
@@ -102,36 +102,51 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYC-GM-nfM">
                                 <rect key="frame" x="261" y="261" width="49" height="46"/>
+                                <gestureRecognizers/>
                                 <state key="normal" title="blank">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wBV-F2-TfI">
                                 <rect key="frame" x="145" y="429" width="118" height="31"/>
+                                <connections>
+                                    <action selector="didMoveSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ks0-M7-QRd"/>
+                                </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wj-V6-Dmo">
                                 <rect key="frame" x="180" y="351" width="48" height="30"/>
                                 <state key="normal" title="Shuffle">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapShuffle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pDx-vQ-y67"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8V-Ks-eWf">
                                 <rect key="frame" x="181" y="389" width="40" height="30"/>
                                 <state key="normal" title="Reset">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapReset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Buq-Qn-bNf"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhM-VL-Ysn">
-                                <rect key="frame" x="90" y="99" width="49" height="46"/>
-                                <state key="normal" title="1">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IdK-wA-Moh">
+                                <rect key="frame" x="147" y="261" width="49" height="46"/>
+                                <state key="normal" title="14">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="MKa-ug-tFP" appends="YES" id="sdk-3u-kCg"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="blankPos" destination="AYC-GM-nfM" id="jLk-Hc-fKL"/>
+                        <outlet property="difficulty" destination="wBV-F2-TfI" id="09C-Dt-MWW"/>
                         <outlet property="eightPos" destination="kak-dg-LX3" id="5rf-pU-B6P"/>
                         <outlet property="elevenPos" destination="vmm-ZP-qZ2" id="f2q-Pq-Roo"/>
                         <outlet property="fifteenPos" destination="QQX-Tc-OH3" id="0Lc-iM-lnY"/>
@@ -152,8 +167,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="MKa-ug-tFP"/>
             </objects>
-            <point key="canvasLocation" x="328" y="408"/>
+            <point key="canvasLocation" x="244" y="162"/>
         </scene>
     </scenes>
 </document>
