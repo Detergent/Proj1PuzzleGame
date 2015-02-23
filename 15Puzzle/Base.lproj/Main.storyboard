@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -16,12 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhM-VL-Ysn">
-                                <rect key="frame" x="90" y="99" width="49" height="46"/>
-                                <state key="normal" title="1">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tbh-xU-jco">
                                 <rect key="frame" x="147" y="99" width="49" height="46"/>
                                 <state key="normal" title="2">
@@ -127,9 +121,35 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhM-VL-Ysn">
+                                <rect key="frame" x="90" y="99" width="49" height="46"/>
+                                <state key="normal" title="1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="blankPos" destination="AYC-GM-nfM" id="jLk-Hc-fKL"/>
+                        <outlet property="eightPos" destination="kak-dg-LX3" id="5rf-pU-B6P"/>
+                        <outlet property="elevenPos" destination="vmm-ZP-qZ2" id="f2q-Pq-Roo"/>
+                        <outlet property="fifteenPos" destination="QQX-Tc-OH3" id="0Lc-iM-lnY"/>
+                        <outlet property="fivePos" destination="znF-UF-Spk" id="d8h-2a-Nzu"/>
+                        <outlet property="fourPos" destination="JBz-da-avW" id="LwO-GY-rwl"/>
+                        <outlet property="fourteenPos" destination="IdK-wA-Moh" id="Zvd-IT-D7T"/>
+                        <outlet property="ninePos" destination="1lo-rc-77O" id="96A-ZF-cMj"/>
+                        <outlet property="onePos" destination="vhM-VL-Ysn" id="mX4-1q-FRB"/>
+                        <outlet property="reset" destination="g8V-Ks-eWf" id="Cll-Sc-c4X"/>
+                        <outlet property="sevenPos" destination="j5v-UN-SDT" id="mp2-JR-BsC"/>
+                        <outlet property="shufle" destination="3wj-V6-Dmo" id="0VR-Qb-tf7"/>
+                        <outlet property="sixPos" destination="SEr-8c-3kZ" id="CEm-1F-8ci"/>
+                        <outlet property="tenPos" destination="sby-a8-L1A" id="ONI-fL-wZ3"/>
+                        <outlet property="thirteenPos" destination="gD1-hg-OHv" id="maP-bq-gaa"/>
+                        <outlet property="threePos" destination="Nhc-wS-OkI" id="hdB-VV-R9B"/>
+                        <outlet property="twelvePos" destination="Q1b-Sk-E08" id="rsM-7Z-MlQ"/>
+                        <outlet property="twoPos" destination="Tbh-xU-jco" id="4WQ-pi-xgT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

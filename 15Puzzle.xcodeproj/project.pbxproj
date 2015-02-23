@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F100ADA1A9BA9EE00866AA2 /* PuzzleBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F100AD91A9BA9EE00866AA2 /* PuzzleBrain.m */; };
 		D0BB40FC1A9AE5FC00487CAB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BB40FB1A9AE5FC00487CAB /* main.m */; };
 		D0BB40FF1A9AE5FC00487CAB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BB40FE1A9AE5FC00487CAB /* AppDelegate.m */; };
 		D0BB41021A9AE5FC00487CAB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0BB41011A9AE5FC00487CAB /* ViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F100AD81A9BA9C900866AA2 /* PuzzleBrain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PuzzleBrain.h; sourceTree = "<group>"; };
+		3F100AD91A9BA9EE00866AA2 /* PuzzleBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PuzzleBrain.m; sourceTree = "<group>"; };
 		D0BB40F61A9AE5FC00487CAB /* 15Puzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 15Puzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BB40FA1A9AE5FC00487CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0BB40FB1A9AE5FC00487CAB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -85,6 +88,8 @@
 				D0BB40FE1A9AE5FC00487CAB /* AppDelegate.m */,
 				D0BB41001A9AE5FC00487CAB /* ViewController.h */,
 				D0BB41011A9AE5FC00487CAB /* ViewController.m */,
+				3F100AD81A9BA9C900866AA2 /* PuzzleBrain.h */,
+				3F100AD91A9BA9EE00866AA2 /* PuzzleBrain.m */,
 				D0BB41031A9AE5FC00487CAB /* Main.storyboard */,
 				D0BB41061A9AE5FC00487CAB /* Images.xcassets */,
 				D0BB41081A9AE5FC00487CAB /* LaunchScreen.xib */,
@@ -221,6 +226,7 @@
 			files = (
 				D0BB41021A9AE5FC00487CAB /* ViewController.m in Sources */,
 				D0BB40FF1A9AE5FC00487CAB /* AppDelegate.m in Sources */,
+				3F100ADA1A9BA9EE00866AA2 /* PuzzleBrain.m in Sources */,
 				D0BB40FC1A9AE5FC00487CAB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,6 +420,7 @@
 				D0BB411B1A9AE5FC00487CAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D0BB411C1A9AE5FC00487CAB /* Build configuration list for PBXNativeTarget "15PuzzleTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +429,7 @@
 				D0BB411E1A9AE5FC00487CAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
