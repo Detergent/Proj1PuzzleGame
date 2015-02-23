@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *shufle;
 @property (weak, nonatomic) IBOutlet UIButton *reset;
 @property (weak, nonatomic) IBOutlet UISlider *difficulty;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *buttons;
 
 @end
 
@@ -37,8 +38,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     NSLog(@"View did load.");
+    //Create swipe direction listeners
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
+    swipeRight.direction=UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeRight];
+    
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
+    swipeLeft.direction=UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeft];
+    
+    UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
+    swipeUp.direction=UISwipeGestureRecognizerDirectionUp;
+    [self.view addGestureRecognizer:swipeUp];
+    
+    UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
+    swipeDown.direction=UISwipeGestureRecognizerDirectionDown;
+    [self.view addGestureRecognizer:swipeDown];
+
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,13 +65,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)didSwipeTile:(UIButton *)sender{
-    NSLog(@"tile slide");
+- (void)didSwipe:(UISwipeGestureRecognizer *)sender{
+    if(sender.direction==UISwipeGestureRecognizerDirectionRight){
+        NSLog(@"Swiped right");
+    }
+    else if(sender.direction==UISwipeGestureRecognizerDirectionLeft){
+         NSLog(@"Swiped left");
+    }
+    else if(sender.direction==UISwipeGestureRecognizerDirectionUp){
+         NSLog(@"Swiped up");
+    }
+    else if(sender.direction==UISwipeGestureRecognizerDirectionDown){
+         NSLog(@"Swiped down");
+    }
 }
-- (IBAction)swipeGestureCheck:(UISwipeGestureRecognizer *)sender{
-    NSLog(@"Swipe gesture recognized");
-    
-}
+                            
+
 - (IBAction)didTapShuffle:(UIButton *)sender{
     NSLog(@"Shuffle pressed");
 }
