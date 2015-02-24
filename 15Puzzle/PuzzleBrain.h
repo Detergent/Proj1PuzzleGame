@@ -11,5 +11,5 @@
 
 @interface PuzzleBrain : NSObject
 -(void) addButtons:(NSMutableArray*) buttons;
--(void) moveButton: (NSString*) direction
+-(BOOL) moveButton: (NSString*) direction;
 @end

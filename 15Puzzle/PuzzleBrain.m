@@ -38,8 +38,7 @@
 
 -(void) addButtons:(NSMutableArray*) buttons
 {
-    [_winBoard addObjectsFromArray:buttons];
-    [_board addObjectsFromArray:buttons];
+    //Figure out logic for adding to 2d nsmuteable array here
 }
 
 -(void) swapA:(UIButton *) buttonA swapB:(UIButton *) buttonB
@@ -60,6 +59,11 @@
             }
         }
     }
+    
+    CGRect tempFrame = buttonA.frame;
+    buttonA.frame=buttonB.frame;
+    buttonB.frame=tempFrame;
+    (NSLog(@"Button %@ switched with Button %@", buttonA, buttonB));
     
 }
 
