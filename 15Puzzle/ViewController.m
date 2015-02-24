@@ -11,6 +11,8 @@
 
 @interface ViewController ()
 
+@property (nonatomic, strong) PuzzleBrain *puzzleBrain;
+
 @property (weak, nonatomic) IBOutlet UIButton *onePos;
 @property (weak, nonatomic) IBOutlet UIButton *twoPos;
 @property (weak, nonatomic) IBOutlet UIButton *threePos;
@@ -30,7 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *shufle;
 @property (weak, nonatomic) IBOutlet UIButton *reset;
 @property (weak, nonatomic) IBOutlet UISlider *difficulty;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *buttons;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSMutableArray *buttons;
 
 @end
 
@@ -56,6 +58,7 @@
     swipeDown.direction=UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:swipeDown];
 
+    [self.puzzleBrain addButtons:_buttons];
     
     
 }
@@ -68,15 +71,29 @@
 - (void)didSwipe:(UISwipeGestureRecognizer *)sender{
     if(sender.direction==UISwipeGestureRecognizerDirectionRight){
         NSLog(@"Swiped right");
+        [self.puzzleBrain moveButton:@"right"];
+        
     }
     else if(sender.direction==UISwipeGestureRecognizerDirectionLeft){
          NSLog(@"Swiped left");
+        [self.puzzleBrain moveButton:@"left"];
+        /*
+        CGRect tempFrame = self.blankPos.frame;
+        self.blankPos.frame=self.fifteenPos.frame;
+        self.fifteenPos.frame=tempFrame;*/
+        
     }
     else if(sender.direction==UISwipeGestureRecognizerDirectionUp){
          NSLog(@"Swiped up");
+        [self.puzzleBrain moveButton:@"up"];
+        /*
+        CGRect tempFrame = self.blankPos.frame;
+        self.blankPos.frame=self.twelvePos.frame;
+        self.twelvePos.frame=tempFrame;*/
     }
     else if(sender.direction==UISwipeGestureRecognizerDirectionDown){
          NSLog(@"Swiped down");
+        [self.puzzleBrain moveButton:@"down"];
     }
 }
                             

@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 JustinGuarino. All rights reserved.
 //
 
-#ifndef _5Puzzle_PuzzleBrain_h
-#define _5Puzzle_PuzzleBrain_h
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-
-#endif
+@interface PuzzleBrain : NSObject
+-(void) addButtons:(NSMutableArray*) buttons;
+-(void) moveButton: (NSString*) direction
+@end
