@@ -103,7 +103,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYC-GM-nfM">
                                 <rect key="frame" x="241" y="252" width="49" height="46"/>
                                 <gestureRecognizers/>
-                                <state key="normal" title="blank">
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -137,6 +137,12 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You Win!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKm-EG-AK5">
+                                <rect key="frame" x="141" y="61" width="67" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -164,22 +170,7 @@
                         <outlet property="threePos" destination="Nhc-wS-OkI" id="hdB-VV-R9B"/>
                         <outlet property="twelvePos" destination="Q1b-Sk-E08" id="rsM-7Z-MlQ"/>
                         <outlet property="twoPos" destination="Tbh-xU-jco" id="4WQ-pi-xgT"/>
-                        <outletCollection property="buttons" destination="vhM-VL-Ysn" id="fDw-zV-FV0"/>
-                        <outletCollection property="buttons" destination="Tbh-xU-jco" id="in7-Zi-fTe"/>
-                        <outletCollection property="buttons" destination="Nhc-wS-OkI" id="9H1-aa-kFz"/>
-                        <outletCollection property="buttons" destination="JBz-da-avW" id="fJX-x6-JPm"/>
-                        <outletCollection property="buttons" destination="znF-UF-Spk" id="dER-9f-E9R"/>
-                        <outletCollection property="buttons" destination="SEr-8c-3kZ" id="fuP-Iq-ISl"/>
-                        <outletCollection property="buttons" destination="j5v-UN-SDT" id="RMQ-Yk-zAX"/>
-                        <outletCollection property="buttons" destination="kak-dg-LX3" id="bDy-Yb-Nw0"/>
-                        <outletCollection property="buttons" destination="1lo-rc-77O" id="g63-DW-kaI"/>
-                        <outletCollection property="buttons" destination="sby-a8-L1A" id="oJF-6a-kij"/>
-                        <outletCollection property="buttons" destination="vmm-ZP-qZ2" id="WXU-Vk-ZHy"/>
-                        <outletCollection property="buttons" destination="Q1b-Sk-E08" id="qw0-z3-dme"/>
-                        <outletCollection property="buttons" destination="gD1-hg-OHv" id="G8x-pS-2bk"/>
-                        <outletCollection property="buttons" destination="IdK-wA-Moh" id="wqI-bn-pwv"/>
-                        <outletCollection property="buttons" destination="QQX-Tc-OH3" id="EIT-ZG-zVd"/>
-                        <outletCollection property="buttons" destination="AYC-GM-nfM" id="jaG-Li-XQT"/>
+                        <outlet property="winLabel" destination="mKm-EG-AK5" id="jcp-Pc-Rb2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

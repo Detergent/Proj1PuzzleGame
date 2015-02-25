@@ -11,5 +11,7 @@
 
 @interface PuzzleBrain : NSObject
 -(void) addButtons:(NSMutableArray*) buttons;
+-(void) resetGame;
 -(BOOL) moveButton: (NSString*) direction;
+-(BOOL) shouldTheGameContinue;
 @end
