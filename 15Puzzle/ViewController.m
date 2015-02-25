@@ -33,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *reset;
 @property (weak, nonatomic) IBOutlet UISlider *difficulty;
 @property (weak, nonatomic) IBOutlet UILabel *winLabel;
+@property (strong, nonatomic) NSMutableArray *buttons;
+@property (nonatomic) int shuffleNum;
 
 
 @end
@@ -42,9 +44,46 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"View did load.");
-    
+    //initialize game logic related variables
     self.puzzleBrain = [[PuzzleBrain alloc] init];
+    self.difficulty.minimumValue=0;
+    self.difficulty.maximumValue=50;
+    self.difficulty.value=25;
+    self.shuffleNum=25;
+    
+    //Set button color properties
     [self.winLabel setAlpha:0];
+    UIColor *lightBlue = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+    [self.onePos setBackgroundColor:lightBlue];
+    [self.onePos setTintColor:[UIColor whiteColor]];
+    [self.twoPos setBackgroundColor:lightBlue];
+    [self.twoPos setTintColor:[UIColor whiteColor]];
+    [self.threePos setBackgroundColor:lightBlue];
+    [self.threePos setTintColor:[UIColor whiteColor]];
+    [self.fourPos setBackgroundColor:lightBlue];
+    [self.fourPos setTintColor:[UIColor whiteColor]];
+    [self.fivePos setBackgroundColor:lightBlue];
+    [self.fivePos setTintColor:[UIColor whiteColor]];
+    [self.sixPos setBackgroundColor:lightBlue];
+    [self.sixPos setTintColor:[UIColor whiteColor]];
+    [self.sevenPos setBackgroundColor:lightBlue];
+    [self.sevenPos setTintColor:[UIColor whiteColor]];
+    [self.eightPos setBackgroundColor:lightBlue];
+    [self.eightPos setTintColor:[UIColor whiteColor]];
+    [self.ninePos setBackgroundColor:lightBlue];
+    [self.ninePos setTintColor:[UIColor whiteColor]];
+    [self.tenPos setBackgroundColor:lightBlue];
+    [self.tenPos setTintColor:[UIColor whiteColor]];
+    [self.elevenPos setBackgroundColor:lightBlue];
+    [self.elevenPos setTintColor:[UIColor whiteColor]];
+    [self.twelvePos setBackgroundColor:lightBlue];
+    [self.twelvePos setTintColor:[UIColor whiteColor]];
+    [self.thirteenPos setBackgroundColor:lightBlue];
+    [self.thirteenPos setTintColor:[UIColor whiteColor]];
+    [self.fourteenPos setBackgroundColor:lightBlue];
+    [self.fourteenPos setTintColor:[UIColor whiteColor]];
+    [self.fifteenPos setBackgroundColor:lightBlue];
+    [self.fifteenPos setTintColor:[UIColor whiteColor]];
     
     //Create swipe direction listeners
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
@@ -64,8 +103,8 @@
     [self.view addGestureRecognizer:swipeDown];
     
     //I tried uising an IBoutletCollection but found that the order couldn't be guaranteed
-    NSMutableArray *buttons=[[NSMutableArray alloc] initWithObjects:_onePos,_twoPos,_threePos,_fourPos,_fivePos,_sixPos,_sevenPos,_eightPos,_ninePos,_tenPos,_elevenPos,_twelvePos,_thirteenPos,_fourteenPos,_fifteenPos,_blankPos, nil];
-    [self.puzzleBrain addButtons:buttons];
+    self.buttons=[[NSMutableArray alloc] initWithObjects:_onePos,_twoPos,_threePos,_fourPos,_fivePos,_sixPos,_sevenPos,_eightPos,_ninePos,_tenPos,_elevenPos,_twelvePos,_thirteenPos,_fourteenPos,_fifteenPos,_blankPos, nil];
+    [self.puzzleBrain addButtons:_buttons];
     
 }
 
@@ -75,42 +114,54 @@
 }
 
 - (void)didSwipe:(UISwipeGestureRecognizer *)sender{
-    if(sender.direction==UISwipeGestureRecognizerDirectionRight){
-        NSLog(@"Swiped right");
-        [self.puzzleBrain moveButton:@"right"];
-
-    }
-    if(sender.direction==UISwipeGestureRecognizerDirectionLeft){
-         NSLog(@"Swiped left");
-        [self.puzzleBrain moveButton:@"left"];
-        
-    }
-   if(sender.direction==UISwipeGestureRecognizerDirectionUp){
-         NSLog(@"Swiped up");
-        [self.puzzleBrain moveButton:@"up"];
-    }
-    if(sender.direction==UISwipeGestureRecognizerDirectionDown){
-         NSLog(@"Swiped down");
-        [self.puzzleBrain moveButton:@"down"];
-    }
-    if(![self.puzzleBrain shouldTheGameContinue])
-        [self.winLabel setAlpha:1];
     
+    if(![self.puzzleBrain isAnimating]){
+        if(sender.direction==UISwipeGestureRecognizerDirectionRight){
+            NSLog(@"Swiped right");
+            [self.puzzleBrain moveButton:@"right"];
+            
+        }
+        if(sender.direction==UISwipeGestureRecognizerDirectionLeft){
+            NSLog(@"Swiped left");
+            [self.puzzleBrain moveButton:@"left"];
+            
+        }
+        if(sender.direction==UISwipeGestureRecognizerDirectionUp){
+            NSLog(@"Swiped up");
+            [self.puzzleBrain moveButton:@"up"];
+        }
+        if(sender.direction==UISwipeGestureRecognizerDirectionDown){
+            NSLog(@"Swiped down");
+            [self.puzzleBrain moveButton:@"down"];
+        }
+    }
+    
+    if(![self.puzzleBrain shouldTheGameContinue])
+        [UIView animateWithDuration:0.5 animations:^{
+            [self.winLabel setAlpha:1];
+        }];
 }
                             
 
 - (IBAction)didTapShuffle:(UIButton *)sender{
     NSLog(@"Shuffle pressed");
+    if(![self.puzzleBrain isAnimating]){
+        
+    }
 }
 
 - (IBAction)didTapReset:(UIButton *)sender{
     NSLog(@"Reset pressed");
-    [self.puzzleBrain resetGame];
-    [self.winLabel setAlpha:0];
+    if(![self.puzzleBrain isAnimating]){
+        [self.puzzleBrain resetGame:_buttons];
+        [self.winLabel setAlpha:0];
+        self.difficulty.value=25;
+    }
 }
 
 - (IBAction)didMoveSlider:(UISlider *)sender{
     NSLog(@"Slider moved");
+    self.shuffleNum=self.difficulty.value;
 }
 
 @end

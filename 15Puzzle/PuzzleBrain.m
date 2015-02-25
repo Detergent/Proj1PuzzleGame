@@ -13,7 +13,14 @@
 @property (nonatomic) int blankRow;
 @property (nonatomic) int blankCol;
 @property (nonatomic, strong) NSMutableArray *winBoard;
-@property (nonatomic) NSMutableArray *board;
+@property (nonatomic, strong) NSMutableArray *board;
+@property (nonatomic, strong) NSMutableArray *copBoard;
+@property (nonatomic) NSTimer * timer;
+@property (nonatomic) int rowSearch;
+@property (nonatomic) int colSearch;
+@property (nonatomic) NSMutableArray *buttonTracker;
+@property (nonatomic) BOOL isAnimating;
+@property (nonatomic) int validMoves;
 
 @end
 
@@ -32,6 +39,10 @@
     
         self.blankRow=3;
         self.blankCol=3;
+        self.rowSearch=0;
+        self.colSearch=0;
+        self.validMoves=0;
+        self.isAnimating=false;
     }
     return _board;
 }
@@ -70,25 +81,28 @@
             return false;
         [self swapA:self.board[self.blankRow][self.blankCol-1] swapB:tempBlank];
         self.blankCol--;
+        self.validMoves++;
     }
     if([direction isEqualToString:@"left"]){
         if(self.blankCol==3)
             return false;
         [self swapA:self.board[self.blankRow][self.blankCol+1] swapB:tempBlank];
         self.blankCol++;
-        
+        self.validMoves++;
     }
     if([direction isEqualToString:@"up"]){
         if(self.blankRow==3)
             return false;
         [self swapA:self.board[self.blankRow+1][self.blankCol] swapB:tempBlank];
         self.blankRow++;
+        self.validMoves++;
     }
     if([direction isEqualToString:@"down"]){
         if(self.blankRow==0)
             return false;
         [self swapA:self.board[self.blankRow-1][self.blankCol] swapB:tempBlank];
         self.blankRow--;
+        self.validMoves++;
     }
     self.board[self.blankRow][self.blankCol]=tempBlank;
     return true;
@@ -109,19 +123,30 @@
             }
         }
     }
+
+    [self animateA:buttonA buttonB:buttonB];
     
-    CGRect tempFrame = buttonA.frame;
-    buttonA.frame=buttonB.frame;
-    buttonB.frame=tempFrame;
-    
-    //(NSLog(@"Button %@ switched with Button %@", buttonA, buttonB));
-    self.board[aRow][bCol]=buttonB;
+    (NSLog(@"Button A switched with Button B"));
+    self.board[aRow][aCol]=buttonB;
     self.board[bRow][bCol]=buttonA;
     
+}
+-(void) animateA:(UIButton *) buttonA buttonB:(UIButton*) buttonB
+{
+    self.isAnimating=TRUE;
+    CGRect tempFrame = buttonA.frame;
+    [UIView animateWithDuration:.5 animations:^{
+        buttonA.frame=buttonB.frame;
+        buttonB.frame=tempFrame;
+    } completion:^(BOOL finished) {
+        self.isAnimating=false;
+    }];
 }
 
 -(BOOL) shouldTheGameContinue
 {
+    if(self.validMoves==0)
+        return true;
     for(int row=0; row<4; row++)
         for(int col=0; col<4; col++)
             if(self.board[row][col]!=self.winBoard[row][col])
@@ -129,16 +154,41 @@
     return false;
 }
 
--(void) resetGame
+-(void) resetGame:(NSMutableArray*) buttons;
 {
+    self.copBoard=[[NSMutableArray alloc] initWithArray:self.winBoard copyItems:YES];
+    self.timer=[NSTimer scheduledTimerWithTimeInterval:.05 target:self selector:@selector(timeHandler:) userInfo:nil repeats:YES];
+    self.buttonTracker=buttons;
     self.blankRow=3;
     self.blankCol=3;
+    self.validMoves=0;
+}
+-(void) timeHandler:(NSTimer*) timer
+{
+    int row=self.rowSearch;
+    int col=self.colSearch;
     
-    for(int row=0; row<4; row++)
-        for(int col=0; col<4; col++)
-            if(_board[row][col]!=_winBoard[row][col])
-                [self swapA:_board[row][col] swapB:_winBoard[row][col]];
-     
+    if(self.board[row][col]!=self.copBoard[row][col])
+        [self swapA:self.board[row][col] swapB:self.copBoard[row][col]];
+    
+    self.colSearch++;
+    if(self.rowSearch==3 && self.colSearch==3){
+        self.rowSearch=0;
+        self.colSearch=0;
+        self.copBoard=nil;
+        [self addButtons:self.buttonTracker];
+        [timer invalidate];
+        return;
+    }
+    else if(self.colSearch>3){
+        self.colSearch=0;
+        self.rowSearch++;
+    }
+
+}
+
+-(void) shuffleBoard:(int) num
+{
     
 }
 
