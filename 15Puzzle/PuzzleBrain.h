@@ -12,7 +12,7 @@
 @interface PuzzleBrain : NSObject
 -(void) addButtons:(NSMutableArray*) buttons;
 -(void) resetGame:(NSMutableArray*) buttons;
--(BOOL) moveButton: (NSString*) direction;
+-(void) moveButton: (NSString*) direction;
 -(BOOL) shouldTheGameContinue;
 -(BOOL) isAnimating;
 -(void) shuffleBoard:(int) num;
